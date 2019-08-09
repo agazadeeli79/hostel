@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sql123Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Bed">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bed_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type_Id" Type="Int32" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="Aviable" Type="Byte" />
+    <Property Name="Room_Id" Type="Int32" />
+    <NavigationProperty Name="Room" Relationship="Self.FK_Beds_Room" FromRole="Beds" ToRole="Room" />
+    <NavigationProperty Name="Type" Relationship="Self.FK_Beds_Type" FromRole="Beds" ToRole="Type" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Guests_Beds" FromRole="Beds" ToRole="Guests" />
+    <NavigationProperty Name="Rezervs" Relationship="Self.FK_Rezerv_Beds" FromRole="Beds" ToRole="Rezerv" />
+  </EntityType>
+  <EntityType Name="Concobsubtion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="BuyDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VSID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Birthdate" Type="DateTime" Precision="3" />
+    <Property Name="Bed_Id" Type="Int32" />
+    <NavigationProperty Name="Bed" Relationship="Self.FK_Guests_Beds" FromRole="Guests" ToRole="Beds" />
+  </EntityType>
+  <EntityType Name="Profit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rezerv_Id" Type="Int32" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Rezerv" Relationship="Self.FK_Profits_Rezerv" FromRole="Profits" ToRole="Rezerv" />
+  </EntityType>
+  <EntityType Name="Rezerv">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Worker_Id" Type="Int32" />
+    <Property Name="Bed_Id" Type="Int32" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="CheckOutDate" Type="DateTime" Precision="3" />
+    <Property Name="Price" Type="Double" />
+    <NavigationProperty Name="Bed" Relationship="Self.FK_Rezerv_Beds" FromRole="Rezerv" ToRole="Beds" />
+    <NavigationProperty Name="Profits" Relationship="Self.FK_Profits_Rezerv" FromRole="Rezerv" ToRole="Profits" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Rezerv_Worker" FromRole="Rezerv" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Room_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Beds" Relationship="Self.FK_Beds_Room" FromRole="Room" ToRole="Beds" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Double" />
+    <NavigationProperty Name="Beds" Relationship="Self.FK_Beds_Type" FromRole="Type" ToRole="Beds" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rezervs" Relationship="Self.FK_Rezerv_Worker" FromRole="Worker" ToRole="Rezerv" />
+  </EntityType>
+  <Association Name="FK_Beds_Room">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="Beds" Type="Self.Bed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Beds">
+        <PropertyRef Name="Room_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Beds_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="Beds" Type="Self.Bed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Beds">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guests_Beds">
+    <End Role="Beds" Type="Self.Bed" Multiplicity="0..1" />
+    <End Role="Guests" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beds">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Guests">
+        <PropertyRef Name="Bed_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_Beds">
+    <End Role="Beds" Type="Self.Bed" Multiplicity="0..1" />
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beds">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Rezerv">
+        <PropertyRef Name="Bed_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profits_Rezerv">
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="0..1" />
+    <End Role="Profits" Type="Self.Profit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerv">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Profits">
+        <PropertyRef Name="Rezerv_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Rezerv">
+        <PropertyRef Name="Worker_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sql123Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Beds" EntityType="Self.Bed" />
+    <EntitySet Name="Concobsubtions" EntityType="Self.Concobsubtion" />
+    <EntitySet Name="Guests" EntityType="Self.Guest" />
+    <EntitySet Name="Profits" EntityType="Self.Profit" />
+    <EntitySet Name="Rezervs" EntityType="Self.Rezerv" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Types" EntityType="Self.Type" />
+    <EntitySet Name="Workers" EntityType="Self.Worker" />
+    <AssociationSet Name="FK_Beds_Room" Association="Self.FK_Beds_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Beds" EntitySet="Beds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beds_Type" Association="Self.FK_Beds_Type">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="Beds" EntitySet="Beds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guests_Beds" Association="Self.FK_Guests_Beds">
+      <End Role="Beds" EntitySet="Beds" />
+      <End Role="Guests" EntitySet="Guests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_Beds" Association="Self.FK_Rezerv_Beds">
+      <End Role="Beds" EntitySet="Beds" />
+      <End Role="Rezerv" EntitySet="Rezervs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profits_Rezerv" Association="Self.FK_Profits_Rezerv">
+      <End Role="Rezerv" EntitySet="Rezervs" />
+      <End Role="Profits" EntitySet="Profits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_Worker" Association="Self.FK_Rezerv_Worker">
+      <End Role="Worker" EntitySet="Workers" />
+      <End Role="Rezerv" EntitySet="Rezervs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(sql123Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(sql123Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

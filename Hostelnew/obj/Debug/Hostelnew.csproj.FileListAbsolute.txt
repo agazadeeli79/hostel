@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.Form1.resources
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.Properties.Resources.resources
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\Hostelnew.exe.config
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\Hostelnew.exe
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\Hostelnew.pdb
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\Hostelnew\Hostelnew\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.csproj.CopyComplete
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.exe
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.pdb
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.Admin.resources
+C:\Users\User\source\repos\Hostelnew\Hostelnew\obj\Debug\Hostelnew.Workers.resources
